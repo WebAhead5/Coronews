@@ -1,10 +1,17 @@
-.body {
+body {
 
 }
 
-.div {
+div {
     background-color: rgba(128, 128, 128, 0.438);
     border: black 1px solid;
     border-radius: 3px;
     box-shadow: gray 1px;
 }
+
+div#weatherContainer, div#articlesContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-around;
+}
+
