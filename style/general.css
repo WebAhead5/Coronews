@@ -15,3 +15,7 @@ div#weatherContainer, div#articlesContainer{
     align-content: space-around;
 }
 
+div#weatherContainer {
+    height: 30px;
+    width: 90%;
+}
