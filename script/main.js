@@ -6,8 +6,17 @@ var articlesApi ={
     getUrl: function (searchQ) {
         return `${articlesApi.url}/everything?q=${searchQ}&apiKey=${articlesApi.apiKey} +`
     }
-
 };
+var weatherAPI = {
+    url: "http://api.weatherstack.com/",
+    apiKey: "917ac2461ccf86560369f3f51787b766",
+    getUrl: function (searchQ) {
+        return `${weatherAPI.url}/current?query=${location}&access_key=${weatherAPI.url}`
+    },
+    exampleLink: "http://api.weatherstack.com/current?query=London&access_key=917ac2461ccf86560369f3f51787b766"   
+}
+
+var elements_weatherContainer = document.getElementById("weatherContainer");
 var elements_articlesContainer = document.getElementById("articlesContainer");
 
 function fetchJsonData(url, funcToApply) {
