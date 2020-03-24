@@ -25,21 +25,17 @@ function fetchAndLoadImg(url, imgElement) {
 }
 
 
-function generateArticleDiv(title,content,imgURL) {
+function generateArticleDiv(title,description,imgURL) {
 
     let divContainer = document.createElement("div");
-    let titleElement = document.createElement("h3");
-    let contentElement = document.createElement("p");
-    let imgElement = document.createElement("img")
+   divContainer.innerHTML=
+       `
+    <img src="${imgURL}" alt="">
+    <h3>${title}</h3>
+    <p>${description}</p> 
 
-     // fetchAndLoadImg(imgURL, imgElement );
-    titleElement.textContent = title;
-    contentElement.textContent = content;
-    imgElement.src = imgURL;
+`;
 
-    divContainer.appendChild(imgElement);
-    divContainer.appendChild(titleElement);
-    divContainer.appendChild(contentElement);
     divContainer.classList.add("articleBody");
     return divContainer;
 }
