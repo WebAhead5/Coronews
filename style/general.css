@@ -9,13 +9,27 @@ div {
     box-shadow: gray 1px;
 }
 
-div#weatherContainer, div#articlesContainer{
+div#weatherContainer{
     display: flex;
     justify-content: space-evenly;
     align-content: space-around;
 }
 
-div#weatherContainer {
-    height: 30px;
-    width: 90%;
+ div#articlesContainer{
+    display: flex;
+     flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-around;
+}
+
+.articleBody{
+    /*background-color: red;*/
+    margin: 5px;
+    padding:5px 10px;
+}
+.articleBody img{
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
 }
