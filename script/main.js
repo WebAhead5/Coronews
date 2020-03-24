@@ -14,8 +14,6 @@ function fetchData(url,funcToApply) {
     fetch(url)
         .then(url=> url.json())
         .then(jsonObj=> {
-            console.log(jsonObj)
-
             funcToApply(jsonObj)
         })
         .catch(e=> console.error(e));
@@ -40,7 +38,11 @@ function generateArticleDiv(title,content,imgSrc) {
 
 fetchData(articlesApi.getUrl("coronavirus"),jsonObj=>
 {
-    let newElement = generateArticleDiv(jsonObj.title,jsonObj.description);
-    elements_articlesContainer.appendChild(newElement);
-    console.log(newElement);
+    jsonObj.articles.forEach(article=>
+    {
+        let newElement = generateArticleDiv(article.title,article.description);
+        elements_articlesContainer.appendChild(newElement);
+    });
+
+
 });
