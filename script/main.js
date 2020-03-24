@@ -31,6 +31,7 @@ function generateArticleDiv(title,content,imgSrc) {
 
     divContainer.appendChild(titleElement);
     divContainer.appendChild(contentElement);
+    divContainer.classList.add("articleBody");
 
     return divContainer;
 }

@@ -9,9 +9,21 @@ div {
     box-shadow: gray 1px;
 }
 
-div#weatherContainer, div#articlesContainer{
+div#weatherContainer{
     display: flex;
     justify-content: space-evenly;
     align-content: space-around;
 }
 
+ div#articlesContainer{
+    display: flex;
+     flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-around;
+}
+
+.articleBody{
+    /*background-color: red;*/
+    margin: 5px;
+    padding:5px 10px;
+}
