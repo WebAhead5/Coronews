@@ -27,3 +27,9 @@ div#weatherContainer{
     margin: 5px;
     padding:5px 10px;
 }
+.articleBody img{
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
