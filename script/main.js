@@ -41,18 +41,28 @@ function fetchAndLoadImg(url, imgElement) {
 }
 
 
-function generateArticleDiv(title,description,imgURL) {
+function generateArticleDiv(article) {
 
     let divContainer = document.createElement("div");
-   divContainer.innerHTML=
-       `
-    <img src="${imgURL}" alt="">
-    <h3>${title}</h3>
-    <p>${description}</p> 
-
+    divContainer.innerHTML=
+        `
+    
+    <img src="${article.urlToImage}" alt="">
+    <div class="articleTextSection">
+        <h3>${article.title}</h3>
+        <p class="articleDesc hidden">${article.description} <a href="${article.url}">Read More...</a> </p>
+         
+    </div>
 `;
 
-    divContainer.classList.add("articleBody");
+    divContainer.classList.add("articleHolder");
+    divContainer.addEventListener("click", ()=> {
+        // let element =Array.from(divContainer.childNodes).indexOf(x=>x.classList.contains("articleDesc"));
+        let element= divContainer.getElementsByClassName("articleDesc")[0];
+        console.log(element)
+
+        element.classList.toggle("hidden")
+    });
     return divContainer;
 }
 
@@ -61,7 +71,7 @@ fetchJsonData(articlesApi.getUrl("coronavirus"), jsonObj=>
 {
     jsonObj.articles.forEach(article=>
     {
-        let newElement = generateArticleDiv(article.title,article.description,article.urlToImage);
+        let newElement = generateArticleDiv(article);
         elements_articlesContainer.appendChild(newElement);
     });
 

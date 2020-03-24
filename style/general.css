@@ -1,5 +1,5 @@
 body {
-
+    font-size: 1em;
 }
 
 div {
@@ -28,20 +28,44 @@ div#wind{
     align-content: space-around;
 }
 
-.articleBody{
+.articleHolder{
     /*background-color: red;*/
     margin: 5px;
     padding:5px 10px;
+    display: flex;
+    align-items: center;
+    /*box-shadow: -10px 0 black;*/
+    box-shadow:  0 2px black ;
+    /*border: 1px gray solid;*/
+    /*border-radius: 10px;*/
+    user-select: none;
 }
-.articleBody img{
-    float: left;
-    width: 100px;
+.articleTextSection{
+    padding-left: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.articleHolder img{
+    background-repeat: no-repeat;
+    border-radius: 10%;
+    width:100px;
     height: 100px;
     margin-right: 10px;
 }
+.articleDesc{
+
 
 div#weathericon{
     width: 50px;
     height: 50px;
     background-size: cover;
+}
+
+}
+
+
+.hidden{
+    display: none   ;
 }
