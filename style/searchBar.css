@@ -19,17 +19,20 @@
 }
 
 #searchBarInput{
-    width: 80%;
+    width: 60%;
     border-radius: 20px;
-    padding-left: 10px;
-    padding-right: 60px;
+    padding-left: 70px;
+    padding-right: 10px;
     height: 40px;
-    border: 1px solid gray;
+    border: 0;
+    box-shadow:  0 2px 3px rgb(169, 169, 169);
+    font-size: 1.1em;
+
 
 }
 #searchButton{
     position: relative;
-    right: 50px;
+    left: 50px;
     width: 25px;
     height : 25px;
     background: url("../resources/img-icon-search.svg") no-repeat;

@@ -56,7 +56,7 @@ function fetchJsonData(url, funcToApply) {
         })
         .catch(e=> console.error(e));
 }
-
+let suggestionsDelayTimeInMS = 300;
 //articles-------------------------------------------------------------------------
 
 function generateArticleDiv(article) {
@@ -191,7 +191,7 @@ function onInputChange() {
         intervalID = null;
         clearInterval(temp);
 
-    },600);
+    },suggestionsDelayTimeInMS);
 
 
 }
@@ -231,5 +231,5 @@ function fetchSuggestionData(url , funcToApply) {
 }
 
 //credits-------------------------------------------------------------------------
-    document.getElementById("credits").classList.toggle("hidden");
+document.getElementById("credits").classList.toggle("hidden");
 
