@@ -41,7 +41,7 @@ function fetchJsonData(url, funcToApply) {
 function generateArticleDiv(article) {
 
     let divContainer = document.createElement("div");
-    divContainer.innerHTML=
+    divContainer.innerHTML+=
         `
     <div class="articleImgAndTextContainer">
         
