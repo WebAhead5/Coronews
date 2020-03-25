@@ -8,7 +8,7 @@ var articlesApi ={
     }
 };
 var weatherAPI = {
-    url: "https://api.weatherstack.com/",
+    url: "http://api.weatherstack.com/",
     apiKey: "917ac2461ccf86560369f3f51787b766",
     getUrl: function (searchQ) {
         return `${weatherAPI.url}current?query=${searchQ}&access_key=${weatherAPI.apiKey}`
