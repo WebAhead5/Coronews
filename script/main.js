@@ -35,11 +35,6 @@ function fetchJsonData(url, funcToApply) {
         })
         .catch(e=> console.error(e));
 }
-function fetchAndLoadImg(url, imgElement) {
-    fetch(url)
-        .then(response=> response.blob())
-        .then(blobRes=> imgElement.src = URL.createObjectURL(blobRes));
-}
 
 
 function generateArticleDiv(article) {
@@ -47,14 +42,21 @@ function generateArticleDiv(article) {
     let divContainer = document.createElement("div");
     divContainer.innerHTML=
         `
+    <div class="articleImgAndTextContainer">
+        
+        <div class="articleTextSection">
+            <h3>${article.title}</h3>
+            <p class="articleDesc">${article.description} <a href="${article.url}">Read More...</a> </p>    
+        </div>
+
+        <img src="${article.urlToImage}" alt="">
+    </div>
     
-    <img src="${article.urlToImage}" alt="">
-    <div class="articleTextSection">
-        <h3>${article.title}</h3>
-        <p class="articleDesc hidden">${article.description} <a href="${article.url}">Read More...</a> </p>
-         
+    <div clss="articleFooterBar">
+        <span>${article.source.name} - ${ generateDateString(article.publishedAt)}</span>  
     </div>
 `;
+
 
     divContainer.classList.add("articleHolder");
     divContainer.addEventListener("click", ()=> {
@@ -66,7 +68,26 @@ function generateArticleDiv(article) {
     });
     return divContainer;
 }
+const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
+function generateDateString(jsonDateFormat){
+
+    let  a = new Date(jsonDateFormat);
+    let b =new Date(Date.now());
+
+   //  const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+   //  const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+   //
+   // console.log(Math.floor((utc2 - utc1) / _MS_PER_DAY));
+   //
+   //
+   //  let  diffDays = parseInt((b - a) / _MS_PER_DAY);
+   //
+   //  console.log(a.getDate(),a.getMonth(),a.getFullYear())
+   //  console.log(diffDays)
+
+    return `${a.getDate()}/${a.getMonth()}/${a.getFullYear()}`
+}
 
 fetchJsonData(articlesApi.getUrl("coronavirus"), jsonObj=>
 {
