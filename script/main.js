@@ -165,6 +165,7 @@ fetchJsonData(weatherAPI.getUrl("Haifa"), jsonObj=>{
 elements_weatherContainer.addEventListener("click", ()=>{
     elements_weatherPanel.classList.toggle("show");
     elements_weatherPanel.classList.toggle("active")
+
 })
 
 
@@ -228,4 +229,7 @@ function fetchSuggestionData(url , funcToApply) {
         })
         .catch(e=> console.error(e));
 }
+
+//credits-------------------------------------------------------------------------
+    document.getElementById("credits").classList.toggle("hidden");
 
