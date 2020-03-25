@@ -17,6 +17,7 @@ var weatherAPI = {
 }
 
 var elements_weatherContainer = document.getElementById("weatherContainer");
+var elements_weatherPanel = document.getElementById("weatherpanel")
 var elements_articlesContainer = document.getElementById("articlesContainer");
 var elements_weathericon = document.getElementById("weathericon");
 var elements_currentTemp = document.getElementById("currentTemp");
@@ -87,3 +88,8 @@ fetchJsonData(weatherAPI.getUrl("Haifa"), jsonObj=>{
     elements_precipitation.textContent += jsonObj.current.precip + "mm";
     elements_weathericon.style.backgroundImage = `url(${jsonObj.current.weather_icons[0]})`
 })
+
+elements_weatherContainer.addEventListener("click", ()=>{
+    elements_weatherPanel.classList.toggle("show");
+    elements_weatherPanel.classList.toggle("active")
+}) 

@@ -1,3 +1,12 @@
+# Todo
+
+- Add a search bar - form?
+- redesign to match googlenews
+- Readme file - user journey
+- Articles in time order
+- Credit API's
+- Accessibility
+
 # Coronews
 
 ## API week project
@@ -38,7 +47,7 @@ You can choose to use other APIs if you prefer, but make sure to do your researc
 - Tests: write tests for your pure functions. We don't expect tests on the DOM or on the response from an API.
 - Design: aim for a responsive, mobile-first design
 - Accessibility: same as always, we'll be running your code through accessibility checkers
-- Take appropriate measures when it comes to [concealing private information](https://gist.github.com/derzorngottes/3b57edc1f996dddcab25) (i.e. your API key!)
+- Take appropriate measures when it comes to [concealing private information](https://gist.githubXMLHttpRequest.com/derzorngottes/3b57edc1f996dddcab25) (i.e. your API key!)
 
 ### Keep in mind
 
