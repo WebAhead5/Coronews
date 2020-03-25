@@ -118,7 +118,7 @@ function generateDateString(jsonDateFormat){
     let hourAgo = new Date(now);
     hourAgo.setHours(hourAgo.getHours() -1);
 
-    console.log({now:now,tenDaysAgo:tenDaysAgo,twoDaysAgo:twoDaysAgo,yesterday,hourAgo:hourAgo,articleTime:articleTime});
+    // console.log({now:now,tenDaysAgo:tenDaysAgo,twoDaysAgo:twoDaysAgo,yesterday,hourAgo:hourAgo,articleTime:articleTime});
     if(articleTime< tenDaysAgo) //more than one day
         return articleTime.toDateString();
 
