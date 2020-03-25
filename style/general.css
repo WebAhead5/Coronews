@@ -14,9 +14,10 @@ div {
 }
 
 
-
-
 .hidden{
     display: none   ;
 }
 
+.shadowBox{
+    box-shadow:  0 2px 3px rgb(169, 169, 169);
+}

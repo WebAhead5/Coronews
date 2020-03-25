@@ -92,6 +92,7 @@ function generateArticleDiv(article) {
     };
 
     divContainer.classList.add("articleHolder");
+    divContainer.classList.add("shadowBox");
     divContainer.addEventListener("mousedown",onSelect );
     divContainer.addEventListener("mouseup", onDeSelect);
     // divContainer.addEventListener("onmouseout", onSelectionLeave);
