@@ -12,6 +12,13 @@ div#weatherContainer{
     background-color:transparent;
     transition:0.5s;
     transition-timing-function: linear;
+    box-shadow:  0 2px 3px rgb(169, 169, 169);
+    margin: 5px;
+    background-image: url(/resources/downarrowX2.png);
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: 5% 14px;
+    
 }
 
 div#weatherContainer:hover{
@@ -31,11 +38,13 @@ div#weatherIconTemp{
 div#weathericon{
     width: 45px;
     height: 45px;
-    background-size: 90%;
-    background-position: bottom;
-    align-self: center;
+    background-size: 80%;
+    /* background-position: bottom; */
+    /* align-self: center; */
     border-radius: 50%;
-    
+    /* background-repeat: no-repeat; */
+    background-position: 4px;
+
 }
 
 div.weatherpanel{
@@ -49,7 +58,7 @@ div.weatherpanel{
     transition-timing-function: ease-in-out; */
     padding:0 8px;
     margin:0;
-    width: 98%;
+    width: 96%;
     display: flex;
     align-items: center;
 }
