@@ -139,4 +139,5 @@ fetchJsonData(weatherAPI.getUrl("Haifa"), jsonObj=>{
 elements_weatherContainer.addEventListener("click", ()=>{
     elements_weatherPanel.classList.toggle("show");
     elements_weatherPanel.classList.toggle("active")
+    document.getElementById("credits").classList.toggle("hidden");
 })
