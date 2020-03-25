@@ -1,7 +1,7 @@
 
 
 var articlesApi ={
-    url: "http://newsapi.org/v2",
+    url: "https://newsapi.org/v2",
     apiKey : "9de2a3c2532845628d72a2c8e8d26c15",
     getUrl: function (searchQ) {
         return `${articlesApi.url}/everything?q=${searchQ}&apiKey=${articlesApi.apiKey} +`
