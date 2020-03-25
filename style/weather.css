@@ -41,7 +41,7 @@ div#weathericon{
 div.weatherpanel{
     background-color:rgba(255,255,255,0.8);
     color:#000;
-    border-radius:0 0 4px 4px;
+    border-radius:4px;
     overflow:hidden;
     opacity:0;
     max-height:0;
@@ -49,7 +49,9 @@ div.weatherpanel{
     transition-timing-function: ease-in-out; */
     padding:0 8px;
     margin:0;
-    width: 95%
+    width: 95%;
+    display: flex;
+    align-items: center;
 }
   
 div.weatherpanel.show{
@@ -64,17 +66,28 @@ div.weatherpanel.show{
 }
 
 div.weatherpanel>div{
-    width: 80px;
+    width: 85px;
     height: 45px;
-    border: red 2px solid;
+    /* border: #808080 2px solid; */
     background-image: url(/resources/wind1.png);
-    background-size: 40%;
+    background-size: 25%;
     background-repeat: no-repeat;
+    background-position-x: 4px;
+    background-position: 5px;
+    padding-left: 55px;
+    display: flex;
+    align-items: center;
+}
+
+div#feelslike{
+    background-image: url(/resources/feelslike1.png);
+}
+
+div#precipitation{
+    background-image: url(/resources/rainfall1.png);
 }
 
 
-div#wind{
-    background-image: url(/resources/wind1.png);
-    background-size: cover;
+div#humidity{
+    background-image: url(/resources/humidity1.png);
 }
-
