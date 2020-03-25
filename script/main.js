@@ -14,7 +14,7 @@ var weatherAPI = {
     getUrl: function (searchQ) {
         return `${weatherAPI.proxyurl2}${weatherAPI.url}current?query=${searchQ}&access_key=${weatherAPI.apiKey}`
     },
-    exampleLink: "https://api.weatherstack.com/current?query=London&access_key=917ac2461ccf86560369f3f51787b766"   
+    exampleLink: "https://api.weatherstack.com/current?query=London&access_key=917ac2461ccf86560369f3f51787b766"
 }
 
 var elements_weatherContainer = document.getElementById("weatherContainer");
@@ -80,24 +80,34 @@ function generateArticleDiv(article) {
     // divContainer.addEventListener("ontouchmove", onSelectionLeave);
     return divContainer;
 }
-const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-
 function generateDateString(jsonDateFormat){
 
     let  articleTime = new Date(jsonDateFormat);
     let now =new Date(Date.now());
-    let tenDaysAgo  = new Date(now.getDate() -10);
-    let yesterday = new Date(now.getDate() -1);
+
+    let tenDaysAgo  = new Date(now);
+    tenDaysAgo.setDate(tenDaysAgo.getDate() - 10);
+
+    let yesterday = new Date(now);
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    let twoDaysAgo  = new Date(now);
+    yesterday.setDate(yesterday.getDate() - 2);
+
     let hourAgo = new Date(now);
     hourAgo.setHours(hourAgo.getHours() -1);
 
-    if(articleTime> tenDaysAgo) //more than one day
+
+    if(articleTime< tenDaysAgo) //more than one day
         return articleTime.toDateString();
 
-    if(articleTime > yesterday )
+    if(articleTime< tenDaysAgo)
         return  articleTime.getDay() +" days ago";
 
-    if(articleTime> hourAgo)
+    if(articleTime < yesterday )
+        return yesterday;
+
+    if(articleTime< hourAgo)
         return articleTime.getHours() + " hours ago";
 
     return articleTime.getMinutes() + " minutes ago"
@@ -129,4 +139,4 @@ fetchJsonData(weatherAPI.getUrl("Haifa"), jsonObj=>{
 elements_weatherContainer.addEventListener("click", ()=>{
     elements_weatherPanel.classList.toggle("show");
     elements_weatherPanel.classList.toggle("active")
-}) 
+})
