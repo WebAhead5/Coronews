@@ -1,6 +1,8 @@
 # Todo
 
 - Add a search bar - form?
+- rearrange the articles to more suite desktop mode
+
 - redesign to match googlenews
 - Readme file - user journey
 - Articles in time order
