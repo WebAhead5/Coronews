@@ -8,10 +8,11 @@ var articlesApi ={
     }
 };
 var weatherAPI = {
+    proxyurl2: "https://agile-waters-87216.herokuapp.com/",
     url: "http://api.weatherstack.com/",
     apiKey: "917ac2461ccf86560369f3f51787b766",
     getUrl: function (searchQ) {
-        return `${weatherAPI.url}current?query=${searchQ}&access_key=${weatherAPI.apiKey}`
+        return `${weatherAPI.proxyurl2}${weatherAPI.url}current?query=${searchQ}&access_key=${weatherAPI.apiKey}`
     },
     exampleLink: "https://api.weatherstack.com/current?query=London&access_key=917ac2461ccf86560369f3f51787b766"   
 }
