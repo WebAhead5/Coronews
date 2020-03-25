@@ -80,14 +80,14 @@ div.weatherpanel>div{
 }
 
 div#feelslike{
-    background-image: url(/resources/feelslike1.png);
+    background-image: url(../resources/feelslike1.png);
 }
 
 div#precipitation{
-    background-image: url(/resources/rainfall1.png);
+    background-image: url(./resources/rainfall1.png);
 }
 
 
 div#humidity{
-    background-image: url(/resources/humidity1.png);
+    background-image: url(~/resources/humidity1.png);
 }
