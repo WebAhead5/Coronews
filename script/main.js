@@ -8,12 +8,12 @@ var articlesApi ={
     }
 };
 var weatherAPI = {
-    url: "http://api.weatherstack.com/",
+    url: "https://api.weatherstack.com/",
     apiKey: "917ac2461ccf86560369f3f51787b766",
     getUrl: function (searchQ) {
         return `${weatherAPI.url}current?query=${searchQ}&access_key=${weatherAPI.apiKey}`
     },
-    exampleLink: "http://api.weatherstack.com/current?query=London&access_key=917ac2461ccf86560369f3f51787b766"   
+    exampleLink: "https://api.weatherstack.com/current?query=London&access_key=917ac2461ccf86560369f3f51787b766"   
 }
 
 var elements_weatherContainer = document.getElementById("weatherContainer");
