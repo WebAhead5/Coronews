@@ -47,6 +47,19 @@ div#weathericon{
 
 }
 
+.credits{
+    font-size: 12px;
+    display: flex;
+    position: absolute;
+    align-self: flex-end;
+    text-align: right;
+    color:  #8ab5e5;
+}
+
+div#credits>div{
+    margin: 0 5px;
+}
+
 div.weatherpanel{
     background-color:rgba(255,255,255,0.8);
     color:#000;
