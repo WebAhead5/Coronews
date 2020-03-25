@@ -1,5 +1,6 @@
 body {
-    font-size: 1em;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
 }
 
 div {
@@ -7,18 +8,6 @@ div {
     /* border: black 1px solid; */
     border-radius: 3px;
     box-shadow: gray 1px;
-}
-
-div#weatherContainer{
-    display: flex;
-    justify-content: space-evenly;
-    align-content: space-around;
-    background-color: #8ab4e5;
-}
-
-div#wind{
-    background-image: url(/resources/wind1.png);
-    background-size: cover;
 }
 
  div#articlesContainer{
@@ -40,6 +29,7 @@ div#wind{
     /*border-radius: 10px;*/
     user-select: none;
 }
+
 .articleTextSection{
     padding-left: 10px;
     width: 100%;
@@ -54,20 +44,9 @@ div#wind{
     height: 100px;
     margin-right: 10px;
 }
+
 .articleDesc{
 }
-
-
-div#weathericon{
-    width: 50px;
-    height: 50px;
-    background-size: cover;
-    width: 30px;
-    height: 30px;
-}
-
-
-
 
 .hidden{
     display: none   ;
