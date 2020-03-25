@@ -4,7 +4,7 @@ var articlesApi ={
     url: "http://newsapi.org/v2",
     apiKey : "9de2a3c2532845628d72a2c8e8d26c15",
     getUrl: function (searchQ) {
-        return `${articlesApi.url}/everything?q=${searchQ}&apiKey=${articlesApi.apiKey} +`
+        return `${articlesApi.url}/everything?q=${searchQ}&from=2020-03-23&to=2020-03-23&apiKey=${articlesApi.apiKey} +`
     }
 };
 var weatherAPI = {
@@ -44,49 +44,64 @@ function generateArticleDiv(article) {
         `
     <div class="articleImgAndTextContainer">
         
-        <div class="articleTextSection">
-            <h3>${article.title}</h3>
-            <p class="articleDesc">${article.description} <a href="${article.url}">Read More...</a> </p>    
+        <div class="articleTextContainer">
+            <p class="articleTitle">${article.title}</p>
+            <p class="articleDesc">${article.description} </p>    
         </div>
 
         <img src="${article.urlToImage}" alt="">
     </div>
     
-    <div clss="articleFooterBar">
+    <div class="articleFooterBar">
         <span>${article.source.name} - ${ generateDateString(article.publishedAt)}</span>  
     </div>
 `;
 
+    let onSelect = ()=> {
+        if(!divContainer.classList.contains("articleHolder-onClick"))
+            divContainer.classList.add("articleHolder-onClick")
+    };
+
+    let onDeSelect =(e)=>{
+
+        divContainer.classList.remove("articleHolder-onClick");
+        window.open(article.url, '_blank');
+
+    };
 
     divContainer.classList.add("articleHolder");
-    divContainer.addEventListener("click", ()=> {
-        // let element =Array.from(divContainer.childNodes).indexOf(x=>x.classList.contains("articleDesc"));
-        let element= divContainer.getElementsByClassName("articleDesc")[0];
-        console.log(element)
+    divContainer.addEventListener("mousedown",onSelect );
+    divContainer.addEventListener("mouseup", onDeSelect);
+    // divContainer.addEventListener("onmouseout", onSelectionLeave);
 
-        element.classList.toggle("hidden")
-    });
+    divContainer.addEventListener("touchstart",onSelect);
+    divContainer.addEventListener("touchend",onDeSelect);
+    // divContainer.addEventListener("ontouchmove", onSelectionLeave);
     return divContainer;
 }
 const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
 function generateDateString(jsonDateFormat){
 
-    let  a = new Date(jsonDateFormat);
-    let b =new Date(Date.now());
+    let  articleTime = new Date(jsonDateFormat);
+    let now =new Date(Date.now());
+    let tenDaysAgo  = new Date(now.getDate() -10);
+    let yesterday = new Date(now.getDate() -1);
+    let hourAgo = new Date(now);
+    hourAgo.setHours(hourAgo.getHours() -1);
 
-   //  const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-   //  const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-   //
-   // console.log(Math.floor((utc2 - utc1) / _MS_PER_DAY));
-   //
-   //
-   //  let  diffDays = parseInt((b - a) / _MS_PER_DAY);
-   //
-   //  console.log(a.getDate(),a.getMonth(),a.getFullYear())
-   //  console.log(diffDays)
+    if(articleTime> tenDaysAgo) //more than one day
+        return articleTime.toDateString();
 
-    return `${a.getDate()}/${a.getMonth()}/${a.getFullYear()}`
+    if(articleTime > yesterday )
+        return  articleTime.getDay() +" days ago";
+
+    if(articleTime> hourAgo)
+        return articleTime.getHours() + " hours ago";
+
+    return articleTime.getMinutes() + " minutes ago"
+
+
 }
 
 fetchJsonData(articlesApi.getUrl("coronavirus"), jsonObj=>
