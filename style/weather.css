@@ -8,7 +8,7 @@ div.dropcontainer{
     align-items: center;
     font-weight: bold;
     cursor:pointer;
-    width: 100%;
+    /* width: 100%; */
     background-color:transparent;
     transition:0.5s;
     transition-timing-function: linear;
@@ -17,7 +17,8 @@ div.dropcontainer{
     background-repeat: no-repeat;
     background-size: 40px;
     background-position: 5% 14px;
-    
+    box-shadow:  0 2px 3px rgb(169, 169, 169);
+    margin: 5px;
 }
 
 div.dropcontainer:hover{
@@ -152,3 +153,38 @@ div.graphpanel.show{
 
 }
 
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: 8px;
+  border: 8px solid #8ab4e5;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #8ab4e5 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
