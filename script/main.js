@@ -6,12 +6,16 @@
 var articlesApi ={
     url: "https://newsapi.org/v2",
     apiKey : "9de2a3c2532845628d72a2c8e8d26c15",
+    sortOptions:{recent:"publishedAt", popularity:"popularity"},
+    selectedSortOption: "publishedAt",
+    default_article_topic :"corona COVID-19",
     getUrl: function (searchQ) {
-        return `${articlesApi.url}/everything?q=${searchQ}&sortBy=publishedAt&language=en&apiKey=${articlesApi.apiKey} +`
+        return `${articlesApi.url}/everything?q=${searchQ}&sortBy=${articlesApi.selectedSortOption}&language=en&apiKey=${articlesApi.apiKey} +`
     }
+
 };
 var elements_articlesContainer = document.getElementById("articlesContainer");
-let default_article_topic ="corona COVID-19";
+
 //weather--------------------------------------------------------------------------
 var weatherAPI = {
     proxyurl2: "https://agile-waters-87216.herokuapp.com/",
@@ -37,14 +41,14 @@ var elements_precipitation = document.getElementById("precipitation");
 let searchAPI = {
     url: "https://api.cognitive.microsoft.com/bing/v7.0/suggestions",
     apiKey : "93247677e13a4c3f97bba1e28ba8bde0",
-
     getUrl: function (searchQ) {
         return `${searchAPI.url}?query=${searchQ}`
     }
 };
 let element_searchInputField = document.getElementById("searchBarInput");
 let element_searchSuggestionsContainer = document.getElementById("searchSuggestions");
-
+let element_searchSortByRecent =document.getElementById("sortByRecent");
+let element_searchSortByPopularity =document.getElementById("sortByPopularity");
 
 //functions-----------------------------------------------------------------------------------------------------------------------------
 function fetchJsonData(url, funcToApply) {
@@ -56,7 +60,7 @@ function fetchJsonData(url, funcToApply) {
         })
         .catch(e=> console.error(e));
 }
-
+let suggestionsDelayTimeInMS = 300;
 //articles-------------------------------------------------------------------------
 
 function generateArticleDiv(article) {
@@ -92,6 +96,7 @@ function generateArticleDiv(article) {
     };
 
     divContainer.classList.add("articleHolder");
+    divContainer.classList.add("shadowBox");
     divContainer.addEventListener("mousedown",onSelect );
     divContainer.addEventListener("mouseup", onDeSelect);
     // divContainer.addEventListener("onmouseout", onSelectionLeave);
@@ -138,7 +143,7 @@ function generateDateString(jsonDateFormat){
 
 
 function loadArticles(searchStr){
-    fetchJsonData(articlesApi.getUrl(searchStr), jsonObj=>
+    fetchJsonData(articlesApi.getUrl(encodeURI(searchStr)), jsonObj=>
     {
         elements_articlesContainer.innerHTML = "";
         jsonObj.articles.forEach(article=>
@@ -150,7 +155,7 @@ function loadArticles(searchStr){
 
     });
 }
-loadArticles(default_article_topic);
+loadArticles(articlesApi.default_article_topic);
 
 //weather--------------------------------------------------------------------------
 fetchJsonData(weatherAPI.getUrl("Haifa"), jsonObj=>{
@@ -173,9 +178,11 @@ elements_weatherContainer.addEventListener("click", ()=>{
 
 element_searchInputField.addEventListener("input",onInputChange);
 function onInputChange() {
+
     let str = element_searchInputField.value;
+
     if(!str || str.trim() === "")
-        str = default_article_topic;
+        str = articlesApi.default_article_topic;
 
     // let currentTime = Date.now();
     if(intervalID ) {
@@ -191,7 +198,7 @@ function onInputChange() {
         intervalID = null;
         clearInterval(temp);
 
-    },600);
+    },suggestionsDelayTimeInMS);
 
 
 }
@@ -230,6 +237,20 @@ function fetchSuggestionData(url , funcToApply) {
         .catch(e=> console.error(e));
 }
 
+
+element_searchSortByPopularity.addEventListener("click",()=>OnSortChange(articlesApi.sortOptions.popularity));
+element_searchSortByRecent.addEventListener("click",()=>OnSortChange(articlesApi.sortOptions.recent));
+function OnSortChange(sortOption){
+    articlesApi.selectedSortOption = sortOption;
+
+    let str = element_searchInputField.value;
+
+    if(!str || str.trim() === "")
+        str = articlesApi.default_article_topic;
+
+    loadArticles(str);
+}
+
 //credits-------------------------------------------------------------------------
-    document.getElementById("credits").classList.toggle("hidden");
+document.getElementById("credits").classList.toggle("hidden");
 

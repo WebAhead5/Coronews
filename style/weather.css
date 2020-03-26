@@ -12,7 +12,6 @@ div#weatherContainer{
     background-color:transparent;
     transition:0.5s;
     transition-timing-function: linear;
-    box-shadow:  0 2px 3px rgb(169, 169, 169);
     margin: 5px;
     background-image: url(/resources/downarrowX2.png);
     background-repeat: no-repeat;
