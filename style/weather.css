@@ -1,4 +1,4 @@
-div#weatherContainer{
+div.dropcontainer{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -20,7 +20,7 @@ div#weatherContainer{
     
 }
 
-div#weatherContainer:hover{
+div.dropcontainer:hover{
     background-color: #8ab5e5;
   }
 
@@ -112,3 +112,43 @@ div#precipitation{
 div#humidity{
     background-image: url(../resources/humidity1.png);
 }
+
+div.graphpanel{
+    background-color:rgba(255,255,255,0.8);
+    color:#000;
+    border-radius:4px;
+    overflow:hidden;
+    opacity:0;
+    max-height:0;
+    /* transition:0.5s;
+    transition-timing-function: ease-in-out; */
+    padding:0 8px;
+    margin:0;
+    width: 96%;
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: center;
+
+}
+  
+div.graphpanel.show{
+    padding-top: 50px;
+    opacity:1;
+    height: 1000px;
+    max-height:1000px;
+    padding:8px;
+    margin:2px 0 4px;
+    transition: 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.casegraph{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    /* margin-left: auto; */
+
+}
+
