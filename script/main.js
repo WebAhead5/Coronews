@@ -56,7 +56,7 @@ function fetchJsonData(url, funcToApply) {
         .then(url => url.json())
         .then(jsonObj => {
             funcToApply(jsonObj)
-            //console.log(url)
+            console.log(url)
         })
         .catch(e => console.error(e));
 }
@@ -66,22 +66,28 @@ let suggestionsDelayTimeInMS = 300;
 function generateArticleDiv(article) {
 
     let divContainer = document.createElement("div");
+
+
     divContainer.innerHTML +=
         `
-    <div class="articleImgAndTextContainer">
-        
-        <div class="articleTextContainer">
-            <p class="articleTitle">${article.title}</p>
-            <p class="articleDesc">${article.description} </p>    
-        </div>
-
-        <img src="${ (!article.urlToImage || article.urlToImage === "https:" ? "./resources/img-icon-globe.svg" : article.urlToImage) }" alt="">
-    </div>
+<div class="articleImgAndTextContainer">
     
-    <div class="articleFooterBar">
-        <span>${article.source.name} - ${generateDateString(article.publishedAt)}</span>  
+    <div class="articleTextContainer">
+        <p class="articleTitle">${article.title}</p>
+        <p class="articleDesc">${article.description} </p>    
     </div>
+
+    <img src="${ (!article.urlToImage || article.urlToImage === "https:" ? "./resources/img-icon-globe.svg" : article.urlToImage) }" 
+    onerror="this.onerror=null; this.src='./resources/img-icon-globe.svg';"  alt="article image">
+    
+</div>
+
+<div class="articleFooterBar">
+    <span>${article.source.name} - ${generateDateString(article.publishedAt)}</span>  
+</div>
 `;
+
+
 
     divContainer.classList.add("articleHolder");
     divContainer.classList.add("shadowBox");
@@ -122,7 +128,13 @@ function generateDateString(jsonDateFormat) {
 
 function loadArticles(searchStr) {
     fetchJsonData(articlesApi.getUrl(encodeURI(searchStr)), jsonObj => {
+
         elements_articlesContainer.innerHTML = "";
+        if(jsonObj.articles.length === 0){
+            let element_noArticleFound = document.createElement("p");
+            element_noArticleFound.classList.add("noArticleFound");
+            elements_articlesContainer.appendChild(element_noArticleFound)
+        }
         jsonObj.articles.forEach(article => {
             let newElement = generateArticleDiv(article);
             elements_articlesContainer.appendChild(newElement);
