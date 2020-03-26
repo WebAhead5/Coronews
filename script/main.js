@@ -75,7 +75,7 @@ function generateArticleDiv(article) {
             <p class="articleDesc">${article.description} </p>    
         </div>
 
-        <img src="${ (!article.urlToImage || article.urlToImage === "https:" ? "./resources/img-icon-search.svg" : article.urlToImage) }" alt="">
+        <img src="${ (!article.urlToImage || article.urlToImage === "https:" ? "./resources/img-icon-globe.svg" : article.urlToImage) }" alt="">
     </div>
     
     <div class="articleFooterBar">
