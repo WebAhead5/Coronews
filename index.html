@@ -30,17 +30,18 @@
     </div>
 </div>
 
-<div  id="searchBarContainer">
+<div  id="searchBarElementsContainer">
+    <div id="inputAndIconContainer">
+        <img src="resources/img-icon-search.svg" alt="magnifying glass search icon"  id="searchIcon">
+        <input list="searchSuggestions" id="searchBarInput" placeholder="search..." class="shadowBox">
+        <datalist id="searchSuggestions">
+        </datalist>
 
-    <img src="resources/img-icon-search.svg" alt="magnifying glass search icon"  id="searchButton">
-
-    <input list="searchSuggestions" id="searchBarInput" placeholder="search..." class="shadowBox">
-    <datalist id="searchSuggestions">
+    </div>
         <!--<option value="Safari">-->
-    </datalist>
 
-    <div id="sortByRecent"></div>
-    <div id="sortByPopularity"></div>
+    <div id="sortByRecent" class="shadowBox"></div>
+    <div id="sortByPopularity" class="shadowBox"></div>
 
 </div>
 

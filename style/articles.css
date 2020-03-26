@@ -51,9 +51,11 @@
     font-size: large;
     color: black;
     /*font-weight: bold;*/
+    word-break: break-word;
 }
 .articleDesc ,.articleFooterBar{
     color: gray;
+    word-break: break-word;
 }
 
 
@@ -67,5 +69,8 @@
         flex-direction: unset;
         justify-content: unset;
         align-content: unset;
+    }
+    .articleHolder{
+        max-width: 100%;
     }
 }

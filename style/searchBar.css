@@ -1,39 +1,79 @@
 
-#searchBarContainer{
-    /*background: black;*/
-    /*opacity: 0.6;*/
-
-    /*position: fixed;*/
-    /*bottom: 0;*/
-    /*left:0;*/
-
+#searchBarElementsContainer{
+    height: 40px;
     width: 100%;
-    /*box-shadow:  0 2px 3px rgb(169, 169, 169);*/
-    /*border-radius: 10px;*/
-
-    margin: 10px;
-
+    /*margin: 10px;*/
+    box-sizing: border-box;
+    padding: 0 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+
 }
 
+#inputAndIconContainer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 #searchBarInput{
-    width: 60%;
-    border-radius: 20px;
+    width: 100%;
+    height: 100%;
     padding-left: 70px;
     padding-right: 10px;
-    height: 40px;
+    box-sizing: border-box;
+    border-radius: 20px;
     border: 0;
     font-size: 1.1em;
+    text-transform: capitalize;
 
 
 }
-#searchButton{
-    position: relative;
-    left: 50px;
+#searchIcon{
+    position: absolute;
+    left: 20px;
+    top:6px;
     width: 25px;
     height : 25px;
     background: url("../resources/img-icon-search.svg") no-repeat;
 
+}
+
+#sortByRecent, #sortByPopularity{
+    border-radius: 20px;
+    min-width: 40px;
+    height: 100%;
+    box-sizing: border-box;
+    margin-left: 10px;
+    text-transform: capitalize;
+
+    /*align content in the center*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#sortByRecent{
+    background: url("../resources/img-icon-recent.svg") no-repeat center;
+    background-size: 30px 30px;
+}
+#sortByPopularity{
+    background: url("../resources/img-icon-popular.svg") no-repeat center;
+    background-size: 30px 30px;
+}
+
+
+
+@media only screen and (min-width: 800px) {
+    #sortByRecent, #sortByPopularity{
+        min-width: 130px;
+        background-position: bottom 50% left 10px;
+        justify-content: flex-end;
+        padding-right: 15px ;
+    }
+    #sortByRecent::after{
+        content: "Recent";
+    }
+    #sortByPopularity::after{
+        content: "popular";
+    }
 }
