@@ -32,7 +32,7 @@ function fetchJsonData(url, funcToApply) {
         .then(url=> url.json())
         .then(jsonObj=> {
             funcToApply(jsonObj)
-            console.log(url)
+            //console.log(url)
         })
         .catch(e=> console.error(e));
 }
@@ -127,7 +127,7 @@ fetchJsonData(articlesApi.getUrl("coronavirus"), jsonObj=>
 });
 
 fetchJsonData(weatherAPI.getUrl("Haifa"), jsonObj=>{
-    console.log(jsonObj)
+    //console.log(jsonObj)
     elements_currentTemp.textContent += jsonObj.current.temperature + "°C";
     elements_feelslike.textContent += jsonObj.current.feelslike  + "°C";
     elements_humidity.textContent += jsonObj.current.humidity + "%";
@@ -140,4 +140,9 @@ elements_weatherContainer.addEventListener("click", ()=>{
     elements_weatherPanel.classList.toggle("show");
     elements_weatherPanel.classList.toggle("active")
     document.getElementById("credits").classList.toggle("hidden");
+})
+
+document.getElementById('graphcontainer').addEventListener('click', ()=>{
+    document.getElementById('graphpanel').classList.toggle("show");
+    document.getElementById('graphpanel').classList.toggle("active")
 })
