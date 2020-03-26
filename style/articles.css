@@ -11,7 +11,7 @@
     padding:var(--padding);
     user-select: none;
 
-    box-shadow:  0 2px 3px rgb(169, 169, 169);
+    box-shadow:  0 2px 4px rgb(169, 169, 169);
     /*border: 1px gray solid;*/
     border-radius: 10px;
 
