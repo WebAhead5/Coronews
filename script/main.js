@@ -75,7 +75,7 @@ function generateArticleDiv(article) {
             <p class="articleDesc">${article.description} </p>    
         </div>
 
-        <img src="${article.urlToImage}" alt="">
+        <img src="${ (!article.urlToImage || article.urlToImage === "https:" ? "./resources/img-icon-search.svg" : article.urlToImage) }" alt="">
     </div>
     
     <div class="articleFooterBar">
@@ -83,27 +83,10 @@ function generateArticleDiv(article) {
     </div>
 `;
 
-    let onSelect = () => {
-        if (!divContainer.classList.contains("articleHolder-onClick"))
-            divContainer.classList.add("articleHolder-onClick")
-    };
-
-    let onDeSelect = (e) => {
-
-        divContainer.classList.remove("articleHolder-onClick");
-        window.open(article.url, '_blank');
-
-    };
-
     divContainer.classList.add("articleHolder");
     divContainer.classList.add("shadowBox");
-    divContainer.addEventListener("mousedown", onSelect);
-    divContainer.addEventListener("mouseup", onDeSelect);
-    // divContainer.addEventListener("onmouseout", onSelectionLeave);
 
-    divContainer.addEventListener("touchstart", onSelect);
-    divContainer.addEventListener("touchend", onDeSelect);
-    // divContainer.addEventListener("ontouchmove", onSelectionLeave);
+    divContainer.addEventListener("click", ()=> window.open(article.url, '_blank'));
     return divContainer;
 }
 function generateDateString(jsonDateFormat) {
