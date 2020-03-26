@@ -1,10 +1,3 @@
-# REMAINING WORK:
-
-* A well-considered architecture for your app - think back to the workshops from the beginning of this week. Try to modularise your code, or break it down into separate files. Document any key decisions about how you structure your code in your readme!
-* rearrange the articles to more suite desktop mode
-* Articles in time order
-* Accessibility
-
 # Coronews - API week project
 
 Our task this week was to build a simple, single-page web app. We were required to query at least two APIs and use the results to update the DOM.
