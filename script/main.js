@@ -109,34 +109,29 @@ function generateArticleDiv(article) {
 function generateDateString(jsonDateFormat) {
 
     let articleTime = new Date(jsonDateFormat);
-    let now = new Date(Date.now());
+    let Difference_In_Time = new Date(Date.now()).getTime() - articleTime;
+    let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    let Difference_In_Hrs = Difference_In_Time/(1000*3600) ;
+    let Difference_In_mins = Difference_In_Time/(1000*60) ;
 
-    let tenDaysAgo = new Date(now);
-    tenDaysAgo.setDate(tenDaysAgo.getDate() - 10);
 
-    let twoDaysAgo = new Date(now);
-    twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
-
-    let yesterday = new Date(now);
-    yesterday.setDate(yesterday.getDate() - 1);
-
-    let hourAgo = new Date(now);
-    hourAgo.setHours(hourAgo.getHours() - 1);
-
-    // console.log({now:now,tenDaysAgo:tenDaysAgo,twoDaysAgo:twoDaysAgo,yesterday,hourAgo:hourAgo,articleTime:articleTime});
-    if (articleTime < tenDaysAgo) //more than one day
+    if (Difference_In_Days >= 10) //more than one day
         return articleTime.toDateString();
 
-    if (articleTime < twoDaysAgo)
-        return articleTime.getDay() + " days ago";
+    if (Difference_In_Days > 2)
+        return parseInt(Difference_In_Days) + " days ago";
 
-    if (articleTime < yesterday)
+    if (Difference_In_Days >= 1)
         return "yesterday";
 
-    if (articleTime < hourAgo)
-        return articleTime.getHours() + " hours ago";
+    if (Difference_In_Hrs > 1)
+    {
+        let intHrs = parseInt(Difference_In_Hrs );
+        return intHrs + (intHrs ===1? " hour ago" : " hours ago");
+    }
 
-    return articleTime.getMinutes() + " minutes ago"
+    let intMins = parseInt(Difference_In_mins);
+    return  intMins + (intMins ===1? " minute ago" : " minutes ago");
 
 
 }
